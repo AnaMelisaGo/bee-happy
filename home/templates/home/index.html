@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Inicio{% endblock extra_title %}
+
+{% block content %}
+<header class="bee-header" id="bee-header">
+    <div class="gallery">
+        <div class="clipped-border">
+            <img src="{% static 'images/bee-flower.webp' %}" alt="Abeja encima de una flor" class="clipped">
+        </div>
+        <div class="clipped-border">
+            <img src="{% static 'images/beekeeping-tips.jpg' %}" alt="Apicultor attendiendo a las colonias" class="clipped">
+        </div>
+        <div class="clipped-border">
+            <img src="{% static 'images/honey-bees-hive.jpg' %}" alt="Abejas en su colonia" class="clipped">
+        </div>
+        <div class="clipped-border">
+            <img src="{% static 'images/honey-sweet.jpg' %}" alt="Miel dentro de un contenedor" class="clipped">
+        </div>
+        <div class="clipped-border">
+            <img src="{% static 'images/gardening.jpg' %}" alt="Jardenería con niños y niñas" class="clipped">
+        </div>
+    </div>
+    <div class="hero-title">
+        <h1>B<span class="bee-yellow">e</span>e Happy Blog</h1>
+        <p>Aprende y comprende su impacto al ecosistema y ayudamos a su supervivencia.</p>
+    </div>
+</header>
+<main id="main">
+    <section class="bee-categories">
+        {% comment %} <h2>Categories</h2> {% endcomment %}
+        <div>
+            <a href="{% url 'post_todos' %}" class="todos-categoria">Todos</a>
+            {% for categoria in categorias %}
+            <a href="{% url 'post_categoria' categoria.slug %}">{{ categoria }}</a>
+            {% endfor %}
+            
+        </div>
+        <div id="categoria-menu">
+            <a href="#" onclick="filtrarPorCategoria('todos')">Todos</a>
+            <a href="#" onclick="filtrarPorCategoria('abejas')">Sobre aBEEjas</a>
+            <a href="#" onclick="filtrarPorCategoria('miel')">Miel y beneficios</a>
+            <a href="#" onclick="filtrarPorCategoria('apicultura')">Apicultura</a>
+            <a href="#" onclick="filtrarPorCategoriia('rescatar')">Rescatar abejas</a>
+            <a href="#" onclick="filtrarPorCategoria('jardeneria')">Jardenería</a>
+        </div>
+    </section>
+    <section>
+        <h2 class="featured-topic">Top topics</h2>
+        <article class="cards-container" id="card-container">
+            {% comment %} <div class="bee-card">
+                <div class="bee-card-head">
+                    <img src="" class="card-img-top" id="img-top" alt="...">
+                    <div class="bee-pill">Category</div>
+                </div>
+                <div class="bee-card-body">
+                    <h5 class="bee-card-title">Different type of bees</h5>
+                    <p class="bee-card-text">Find out the different types of bees and their importance in our ecosystem.</p>
+                    <a href="/blog_post/" class="btn-read">Read more <i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div> {% endcomment %}
+            {% comment %} <div class="bee-card">
+                <div class="bee-card-head">
+                    <img src="{% static 'images/bee-flower.webp' %}" class="card-img-top" alt="...">
+                    <div class="bee-pill">Category</div>
+                </div>
+                <div class="bee-card-body">
+                    <h5 class="bee-card-title">Different type of bees</h5>
+                    <p class="bee-card-text">Find out the different types of bees and their importance in our ecosystem.</p>
+                    <a href="#" class="btn-read">Read more <i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+            <div class="bee-card">
+                <div class="bee-card-head">
+                    <img src="{% static 'images/bee-flower.webp' %}" class="card-img-top" alt="...">
+                    <div class="bee-pill">Category</div>
+                </div>
+                <div class="bee-card-body">
+                    <h5 class="bee-card-title">Different type of bees</h5>
+                    <p class="bee-card-text">Find out the different types of bees and their importance in our ecosystem.</p>
+                    <a href="#" class="btn-read">Read more <i class="fa-solid fa-arrow-right-long"></i></a>
+                </div>
+            </div> {% endcomment %}
+        </article>
+    </section>
+
+</main>
+{% endblock content %}
+
+{% block post_js %}
+<script>
+const STATIC_URL = "{{ STATIC_URL }}";
+</script>
+<script src="{% static 'js/home/home.js' %}"></script>
+{% endblock post_js %}

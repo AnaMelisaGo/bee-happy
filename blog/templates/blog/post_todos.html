@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Posts{% endblock extra_title %}
+
+{% block content %}
+<main class="main-container">
+{% if post_seleccionado  %}
+<h1>{{ categoria_seleccionada }}</h1>
+{% else %}
+<h1>Todos los blogs</h1>
+{% endif %}
+    <section class="main-cuerpo">
+        <article class="px-5">
+            {% for post in posts %}
+
+            <div class="card mb-5">
+                {% if post.imagen_principal %}
+                <img src="{{ post.imagen_principal.url }}" class="card-img-top post-todos" alt="Imagen principal del post">
+                {% else %}
+                <img src="{% static 'images/no_image_available.jpg' %}" class="card-img-top post-todos" alt="No image available">
+                {% endif %}
+                <div class="bee-pill">{{ post.categoria.name }}</div>
+                <div class="bee-card-body">
+                    <h5 class="card-title">{{ post.titulo }}</h5>
+                    <p class="card-text">{{ post.resumen }}</p>
+                    <p>
+                        <small>Autor: <span>{{ post.autor }}</span></small>
+                        <small>Categoria: <span>{{ post.categoria }}</span></small>
+                        
+                    </p>
+                    <p class="card-text"><small>Actualizado el {{ post.actualizado|date:"d M Y" }}</small></p>
+                    <a href="{% url 'post_leer' post.id post.slug %}" class="btn btn-secondary">Leer</a>
+                </div>
+            </div>
+             {% endfor %}
+            {% comment %} ---- delete ----- {% endcomment %}
+            {{ posts }}
+            {% for post in posts %}
+            {{ post.slug }}
+            {{ post.id }}
+            {{ post.titulo }}
+            {{ post.resumen }}
+            {{ post.categoria }}
+            {% comment %} {{ post.imagen_principal.url }} {% endcomment %}
+            {{ post.cuerpo }}
+            {{ post.fecha_publicacion }}
+            {{ post.actualizado }}
+            {{ post.likes.count }}
+            {{ post.autor.id }}
+            {{ post.autor }}
+            {{ post.status }}
+            
+        
+            {% for categoria in categorias %}
+        
+            {{ categoria.name }} - {{ categoria.slug }}
+            {% endfor %}
+            {% endfor %}
+            {% comment %} ------ delete   -------------- {% endcomment %}
+        </article>
+        <aside class="blog-aside">
+            {% include 'blog/components/categories-menu.html' %}
+        </aside>
+    </section>
+</main>
+{% endblock content %}

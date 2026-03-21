@@ -1,0 +1,20 @@
+<!-- 
+    Reusable Success Modal Script 
+    This format can use template tags to render data inside javascript  
+-->
+<script>
+    {% comment %} console.log('Hello World!'); {% endcomment %}
+    document.addEventListener("DOMContentLoaded", function(){
+        {% for message in messages %}
+            {% if message.tags == 'info' %}
+            document.getElementById('message-area').innerText = "{{ message }}";
+            let modal = new bootstrap.Modal(document.getElementById('staticMessage'));
+            modal.show();
+
+            setTimeout(function(){
+                window.location.href = "{% url redirect %}"
+            },6000);
+            {% endif %}
+        {% endfor %}
+    });
+</script>

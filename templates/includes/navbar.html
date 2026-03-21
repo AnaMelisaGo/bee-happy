@@ -1,0 +1,44 @@
+{% load static %}
+<nav class="bee-nav">
+    <a href="{% url 'home' %}" class="bee-logo">
+        <img src="{% static 'images/bee-logo.png' %}" alt="Bee Happy Logo">
+        B<span class="bee-yellow">e</span>e Happy
+    </a>
+    <input type="checkbox" name="menu-btn" id="menu-btn">
+    <label for="menu-btn" class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <ul class="menu">
+        <li><a href="{% url 'home' %}" class="{{ home }}">Inicio</a></li>
+        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="{% url 'contact_us' %}" class="{{ contact }}">Contacto</a></li>
+        <li class="dropdown">
+            {% comment %} <a href="#" class="login-btn">Login</a> {% endcomment %}
+            <a class="login-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user"></i>
+                {% if user.is_authenticated %}
+                <span>Mi cuenta</span>
+                {% else %}
+                <span>Usuario</span>
+                {% endif %}
+            </a>
+            {% comment %} <li><a href="{% url 'profile_list' %}">Profiles</a></li> {% endcomment %}
+            <ul class="dropdown-menu dropdown-menu-end">
+                {% if user.is_authenticated %}
+                {% comment %} <li><a class="dropdown-item" href="{% url 'profile_list' %}">Profiles</a></li> {% endcomment %}
+                    <small class="text-secondary p-3">Hola, {{ request.user.username }}</small>
+                    <li><a class="dropdown-item" href="{% url 'profile' request.user.id %}">Ver cuenta</a></li>
+                    <li><a class="dropdown-item logout" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Cerrar sesión</a></li>
+                {% else %}
+                    <small class="text-secondary ms-3">Debe iniciar session</small>
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li>
+                    <hr>
+                    <small class="text-secondary ms-3">¿Eres nuevo?</small>
+                    <li><a class="dropdown-item" href="{% url 'signup' %}">Crear usuario</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    </ul>
+</nav>

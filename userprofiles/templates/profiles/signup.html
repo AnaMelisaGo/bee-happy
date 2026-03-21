@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Sign Up{% endblock extra_title %}
+
+{% block content %}
+<main class="main-container d-flex justify-content-center align-items-center">
+    <section class="form-container col-md-6">
+        <div class="d-flex justify-content-between">
+            <h1>Crea tu cuenta</h1>
+            <a href="{% url 'home' %}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar">
+                <i class="fa-solid fa-xmark text-secondary fs-3"></i>
+            </a>
+        </div>
+        <small>Si ya tiene cuenta de usuario, puede iniciar sesión <a href="{% url 'login' %}" class="text-light text-decoration-underline">aquí</a>.</small>
+        <div class="mt-5">
+            <!-- REUSABLE BS FLOATING FORM -->
+            {% include 'components/floating-form.html' with form=form button_text="Registrar" %}
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block post_js %}
+    {% include 'partials/_success_modal_handler.html' %}
+{% endblock post_js %}

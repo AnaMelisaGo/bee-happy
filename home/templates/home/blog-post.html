@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Blog Post 1{% endblock extra_title %}
+
+{% block content %}
+<div class="blog-container" id="post-content">
+    <header class="blog-header" id="blog-header">
+        <img src="" alt="Photo" id="imagen">
+        <div class="blog-titulo">
+            <h1 id="titulo">Titulo</h1>
+            <p id="resumen">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus adipisci animi dolor facilis eaque provident explicabo vel mollitia dicta dolorum.</p>
+        </div>
+    </header>
+    <main>
+        <section class="blog-descripcion">
+            <div class="blog-autor">
+                <p >Autor: <span id="nombre-autor"></span></p>
+                {% comment %} <a href="#" class="follow-btn"><i class="fa-solid fa-square-plus"></i> Follow</a> {% endcomment %}
+                <p>Fecha publicación: <span id="fecha"></span></p>
+            </div>
+            <div class="category-like">
+                <a id="categoria-post" href="#"><i class="fa-solid fa-tag"></i> Categoría</a>
+                {% comment %} <div>
+                    <a href="#" class="like-btn"><i class="fa-regular fa-heart"></i></a>
+                    <small>20 Likes</small>
+                </div> {% endcomment %}
+            </div>
+        </section>
+        <section class="main-cuerpo">
+            <article class="cuerpo-articulo">
+                <h3 id="titulo-2">Titulo</h3>
+                <p id="cuerpo">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi reiciendis aliquam delectus quaerat officia voluptatibus placeat quis optio, corrupti sit explicabo expedita error odio obcaecati autem ex nulla, quam inventore! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi reiciendis aliquam delectus quaerat officia voluptatibus placeat quis optio, corrupti sit explicabo expedita error odio obcaecati autem ex nulla, quam inventore!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi reiciendis aliquam delectus quaerat officia voluptatibus placeat quis optio, corrupti sit explicabo expedita error odio obcaecati autem ex nulla, quam inventore! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi reiciendis aliquam delectus quaerat officia voluptatibus placeat quis optio, corrupti sit explicabo expedita error odio obcaecati autem ex nulla, quam inventore! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi reiciendis aliquam delectus quaerat officia voluptatibus placeat quis optio, corrupti sit explicabo expedita error odio obcaecati autem ex nulla, quam inventore!
+                </p>
+            </article>
+            <aside class="blog-aside">
+                <div>
+                    <h5>Categorías</h5>
+                    <ul>
+                        <li><a href="#">Todas</a></li>
+                        <li><a href="#">Sobre aBEEjas</a></li>
+                        <li><a href="#">Miel y beneficios</a></li>
+                        <li><a href="#">Apicultura</a></li>
+                        <li><a href="#">Rescatar abejas</a></li>
+                        <li><a href="#">Jardenería</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Sobre el autor</h5>
+                    <p>Nombre: <span id="autor-aside"></span></p>
+                    <a class="follow-btn"><i class="fa-solid fa-square-plus"></i> Follow</a>
+                </div>
+                <div class="sidebar-widget">
+                    <h5 class="text-decoration-underline">Suscríbete</h5>
+                    <p class="mb-3">Recibe noticias y nuevos artículos del blog en tu email.</p>
+                    <form class="susbribe-form">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email-suscripcion" placeholder="name@example.com">
+                            <label for="email-suscripcion">Email address</label>
+                        </div>
+                        <p id="mensaje-error" style="display: none"></p>
+                        <button type="submit" class="btn btn-secondary">Suscribir!</button>
+                    </form>
+                </div>
+            </aside>
+        </section>
+    </main>
+</div>
+{% endblock content %}
+
+{% block post_js %}
+<script>
+{% comment %} const STATIC_URL = "/static/"; {% endcomment %}
+</script>
+<script src="{% static 'js/home/home.js' %}"></script>
+{% endblock post_js %}

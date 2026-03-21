@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Edit Post{% endblock extra_title %}
+
+{% block content %}
+<main class="main-container d-flex justify-content-center align-items-center">
+    <section class="form-container col-md-6">
+        <div class="d-flex justify-content-between">
+            <h1>Modificar post</h1>
+            <a href="{% url 'profile' user.id %}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cancelar">
+                <i class="fa-solid fa-xmark text-secondary fs-3"></i>
+            </a>
+        </div>
+        <div class="mt-5">
+            <!-- REUSABLE BS FLOATING FORM -->
+            {% include 'components/floating-form.html' with form=form button_text="Guardar cambios" %}
+        </div>
+    </section>
+</main>
+{% endblock content %}

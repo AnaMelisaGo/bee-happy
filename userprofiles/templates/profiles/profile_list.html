@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Listado{% endblock extra_title %}
+
+
+{% block content %}
+<main class="main-container">
+    <h1 class="display-5 text-center">Todos los usuarios del blog</h1>
+    <div class="container d-flex flex-wrap justify-content-center align-items-center gap-5">
+        {% if profiles %}
+            {% for profile in profiles %}
+                <div class="card mb-5" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                        <img src="{% static 'images/photo-default-user.webp' %}" class="img-fluid rounded-start" alt="Foto de usuario por defecto. Usuario no tiene foto propio.">
+                        </div>
+                        <div class="col-md-8">
+                        <div class="card-body text-dark">
+                            {% if profile.user.first_name and profile.user.last_name %}
+                            <h5 class="card-title">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                            {% else %}
+                            <h5 class="card-title">{{ profile.user.username }}</h5>
+                            {% endif %}
+                            <p class="card-text"><a href="{% url 'profile' profile.user.id %}">@{{ profile.user.username|lower }}</a></p>
+                            <p class="text-dark">Seguidores: {{ profile.followed_by.all.count }}</p>
+                            <p class="card-text text-dark">Visto por última vez: {{ profile.date_modified }}</p>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} <p>Username: {{ profile.user.username }}</p>
+                <a href="#">@{{ profile.user.username|lower }}</a>
+                <p>Last updated: {{ profile.date_modified }}</p> {% endcomment %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</main>
+{% endblock content %}

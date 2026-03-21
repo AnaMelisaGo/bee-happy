@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Blog Details{% endblock extra_title %}
+
+{% block content %}
+<div class="blog-container">
+    <header class="blog-header" id="blog-header">
+        {% if post.imagen_principal %}
+        <img src="{{ post.imagen_principal.url }}" alt="Imagen principal del post">
+        {% else %}
+        <img src="{% static 'images/no_image_available.jpg' %}" alt="No imagen">
+        {% endif %}
+        <div class="blog-titulo">
+            <h1 id="titulo">{{ post.titulo }}</h1>
+            <p>{{ post.resumen }}</p>
+            <p>Actualizado el {{ post.actualizado|date:"d M Y" }}</p>
+        </div>
+    </header>
+    <main>
+        <section class="blog-descripcion">
+            <div class="blog-autor">
+                {% if post.autor.first_name and post.autor.last_name %}
+                <p>Autor: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
+                {% else %}
+                <p>Autor: {{ post.autor.username }}</p>
+                {% endif %}
+                {% comment %} <a href="#" class="follow-btn"><i class="fa-solid fa-square-plus"></i> Follow</a> {% endcomment %}
+                <p>Fecha publicación: {{ post.fecha_publicacion|date:"d M Y" }}</p>
+            </div>
+            <div class="category-like">
+                {% if post.categoria %}
+                <a href="{% url 'post_categoria' post.categoria.slug %}"><i class="fa-solid fa-tag"></i> {{ post.categoria.name }}</a>
+                {% else %}
+                <p><i class="fa-solid fa-tag"></i> {{ post.categoria }}</p>
+                {% endif %}
+                <div>
+                    <a href="#" class="like-btn"><i class="fa-regular fa-heart"></i></a>
+                    <small>{{ post.likes.count }}</small>
+                </div>
+            </div>
+        </section>
+        <section class="main-cuerpo">
+            <article class="cuerpo-articulo">
+                <h3>{{ post.titulo }}</h3>
+                <p>
+                    {{ post.cuerpo }}
+                </p>
+            </article>
+            <aside class="blog-aside">
+                {% include 'blog/components/categories-menu.html' %}
+                <div>
+                    <h5>Sobre el autor</h5>
+                    <p>Nombre: {{ post.autor.first_name }} {{ post.autor.last_name }}</p>
+                    <a href="{% url 'profile' post.autor.id %}">@{{ post.autor.username|lower }}</a>
+                    <a class="follow-btn"><i class="fa-solid fa-square-plus"></i> Follow</a>
+                </div>
+            </aside>
+        </section>
+    </main>
+</div>
+{% endblock content %}

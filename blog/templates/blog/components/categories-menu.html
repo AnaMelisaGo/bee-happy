@@ -1,0 +1,24 @@
+<div>
+    <h5>Categorías</h5>
+    <ul>
+        <li class="{{ todos }}"><a href="{% url 'post_todos' %}">Todas</a></li>
+
+        {% for categoria in categorias %}
+            <li {% if categoria.slug == current_slug %}class="aside-active"{% endif %}>
+                <a href="{% url 'post_categoria' categoria.slug %}">{{ categoria.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="sidebar-widget">
+    <h5 class="text-decoration-underline">Suscríbete</h5>
+    <p class="mb-3">Recibe noticias y nuevos artículos del blog en tu email.</p>
+    <form class="susbribe-form">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email-suscripcion" placeholder="name@example.com">
+            <label for="email-suscripcion">Email address</label>
+        </div>
+        <p id="mensaje-error" style="display: none"></p>
+        <button type="submit" class="btn btn-secondary">Suscribir!</button>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<!-- Reusable Floating Input Form of BS -->
+<form method="POST" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-floating mb-3">
+        {{ field }}
+        <label for="{{ field.id_for_label }}">
+            {{ field.label }}
+        </label>
+        {% if field.errors %}
+        <div class="invalid-feedback">
+            {{ field.errors.0 }}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <button class="btn btn-secondary w-50" type="submit" name="action" value="{{ action }}">
+            {{ button_text|default:"Submit" }}
+        </button>
+    </div>
+</form>

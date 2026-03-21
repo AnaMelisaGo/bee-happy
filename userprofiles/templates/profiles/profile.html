@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_title %}Mi cuenta{% endblock extra_title %}
+
+{% block content %}
+<div class="profile-container">
+    <aside>
+        <div class="mb-5">
+            {% if user.id == profile.user.id %}
+            <h1 class="text-center">Mi cuenta</h1>
+            {% else %}
+            <a href="{% url 'profile' user.id %}" class="hvr-icon-back"><i class="fa-solid fa-circle-arrow-left hvr-icon"></i> MI CUENTA</a>
+            {% endif %}
+        </div>
+
+        <div class="about-user">
+            <img src="{% static 'images/photo-default-user.webp' %}" alt="Foto de usuario por defecto. Usuario no tiene foto propio.">
+            <h2 class="bee-yellow"> {{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
+            <p>@{{ profile.user.username|lower }}</p>
+            {% if profile.user.id is not user.id %}
+            {% endif %}
+            <p>Miembro desde {{ profile.user.date_joined|date:"d M Y" }}</p>
+            <div class="d-flex">
+                {% if profile.user.id is not user.id %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% if profile in user.profile.follows.all %}
+                        {% comment %} <a href="#" class="unfollow btn-profile"><i class="fa-solid fa-square-minus"></i> Unfollow</a> {% endcomment %}
+                        <button class="unfollow btn-profile" name="action" value="unfollow" type="submit">
+                            <i class="fa-solid fa-square-minus"></i> Unfollow
+                        </button>
+                    {% else %}
+                        {% comment %} <a href="#" class="follow btn-profile"><i class="fa-solid fa-square-plus"></i> Follow</a> {% endcomment %}
+                        <button class="follow btn-profile" name="action" value="follow" type="submit">
+                            <i class="fa-solid fa-square-plus"></i> Follow
+                        </button>
+                    {% endif %}
+                </form>
+                <a href="mailto: {{ profile.user.email }}" class="btn btn-success hvr-grow"><i class="fa-solid fa-envelope"></i> Mensaje</a>
+                {% else %}
+                    <a href="{% url 'update_profile' profile.user.id %}" class="btn btn-secondary me-4 hvr-grow"><i class="fa-solid fa-pencil"></i> Editar</a>
+                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-danger hvr-grow">Log out <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="users-container">
+            <small class="text-end"><a href="{% url 'profile_list' %}" class="text-secondary">(Ver todos)</a></small>
+            <div>
+                <a data-bs-toggle="collapse" href="#collapseFollower" role="button" aria-expanded="false" aria-controls="collapseFollower">
+                    Usuarios que sigue <small>({{ profile.follows.all.count }})</small>
+                </a>
+                {% comment %} <h6>Usuarios que sigue <small>({{ profile.follows.all.count }})</small></h6> {% endcomment %}
+                <div class="collapse" id="collapseFollower">
+                    <div>
+                        {% for following in profile.follows.all %}
+                            <ul>
+                                <li><a href="{% url 'profile' following.user.id %}">{{ following }}</a></li>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+            <div>
+                <a data-bs-toggle="collapse" href="#collapseFollows" role="button" aria-expanded="false" aria-controls="collapseFollows">
+                    Seguidores <small>({{ profile.followed_by.all.count }})</small>
+                </a>
+                {% comment %} <h6>Seguidores <small>({{ profile.followed_by.all.count }})</small></h6> {% endcomment %}
+                <div class="collapse" id="collapseFollows">
+                    <div>
+                        {% for follower in profile.followed_by.all %}
+                            <ul>
+                                <li><a href="{% url 'profile' follower.user.id %}">{{ follower }}</a></li>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </aside>
+    <main>
+        <section class="profile-menu">
+            <ul>
+                <li class="tab-btn tab-btn-active" data-target="publicado">
+                    Publicado
+                </li>
+                {% if user.id == profile.user.id %}
+                <li class="tab-btn" data-target="borrador">
+                    Borrador
+                </li>
+                {% if user.is_superuser %}
+                <li class="tab-btn" data-target="categoria">
+                    Categoría
+                </li>
+                {% endif %}
+                <li class="tab-btn crear-post hvr-pulse" data-target="crear">
+                    <i class="fa-solid fa-plus"></i> Crear Post
+                </li>
+                {% endif %}
+            </ul>
+        </section>
+        <section class="my-3 p-2">
+            <article id="publicado" class="tab-content tab-active">
+                {% include 'blog/includes/publicado.html' %}
+            </article>
+            <article id="borrador" class="tab-content">
+                {% include 'blog/includes/borrador.html' %}
+            </article>
+            <article id="crear" class="tab-content">
+                {% include 'blog/includes/add_post.html' %}
+            </article>
+            <article id="categoria" class="tab-content">
+                {% include 'blog/includes/categoria.html' %}
+            </article>
+            {% comment %} <article id="editar" class="tab-content">
+                {% include 'blog/includes/edit_post.html' %}
+            </article> {% endcomment %}
+        </section>
+    </main>
+</div>
+{% endblock content %}
+
+{% block post_js %}
+<script src="{% static 'js/userprofiles/profiles.js' %}"></script>
+{% endblock post_js %}

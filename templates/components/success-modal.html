@@ -1,0 +1,19 @@
+<!-- Success Modal -->
+<div class="modal modal-success fade" id="staticMessage" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticMessageLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" data-bs-theme="dark">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+                <h2 class="bee-yellow">Éxito!</h2>
+                <div class="success-icon">
+                    <i class="fa-regular fa-circle-check text-success"></i>
+                </div>
+                <h3 class="my-5 text-center" id="message-area"></h3>
+                <p>Redirigiendo a la página ...</p>
+                <a href="{% url 'home' %}" class="text-secondary link-small">Pincha aquí para ir al inicio</a>
+            </div>
+        </div>
+    </div>
+</div>

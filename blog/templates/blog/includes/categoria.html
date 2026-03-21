@@ -1,0 +1,16 @@
+{% comment %} <h2>Categorias</h2> {% endcomment %}
+
+<h5 class="text-center">Todas las categorias</h5>
+<div class="categorias">
+    <div>
+        {% for categoria in categorias %}
+        <p>{{ categoria }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="my-5 form-categoria">
+    <div class="form-container">
+        <h5>Añadir categoría</h5>
+        {% include 'components/floating-form.html' with form=form1 action="category" button_text="Añadir categoría" %}
+    </div>
+</div>

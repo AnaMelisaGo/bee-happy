@@ -1,0 +1,46 @@
+from django.db import models
+from django.contrib.auth.models import User
+from django.utils.text import slugify
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+class Post(models.Model):
+    STATUS_CHOICES = [
+        ('borrador', 'Borrador'),
+        ('publicado', 'Publicado')
+    ]
+
+    titulo = models.CharField(max_length=200)
+    slug = models.SlugField(blank=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_post')
+    categoria = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='posts', blank=True, null=True)
+    fecha_publicacion = models.DateTimeField(auto_now_add=True)
+    resumen = models.CharField(max_length=100, null=True, blank=True)
+    cuerpo = models.TextField(null=True, blank=True)
+    imagen_principal = models.ImageField(upload_to='images/', null=True, blank=True)
+    actualizado = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='borrador')
+    likes = models.ManyToManyField(User, related_name='blog_likes', blank=True)
+
+    class Meta:
+        """ Ordenar los posts del más reciente a lo más antiguo """
+        ordering = ['-fecha_publicacion']
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        """ Devolver el título del post en el admin """
+        return self.titulo

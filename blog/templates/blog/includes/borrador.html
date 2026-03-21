@@ -1,0 +1,53 @@
+{% load static %}
+<article>
+    <h5>Borrador</h5>
+    <div class="profile-posts">
+        {% for post in posts %}
+            {% if post.status == 'borrador' %}
+            <div class="pos-rel tarjeta mb-3">
+                {% if post.imagen_principal %}
+                <img src="{{ post.imagen_principal.url }}" class="profile-post card-img-top" alt="Imagen principal del post">
+                {% else %}
+                <img src="{% static 'images/no_image_available.jpg' %}" class="profile-post card-img-top" alt="No image available">
+                {% endif %}
+                <div class="bee-pill">{{ post.categoria.name }}</div>
+                <div class="bee-card-body">
+                    <h5 class="card-title">{{ post.titulo }}</h5>
+                    <p class="card-text">{{ post.resumen|slice:40 }}</p>
+                    <p>
+                        <small>Autor: <span>{{ post.autor }}</span></small>  
+                    </p>
+                    <p>
+                        <small>Categoria: <span>{{ post.categoria }}</span></small>
+                    </p>
+                    <p class="card-text"><small>Actualizado el {{ post.actualizado|date:"d M Y" }}</small></p>
+                    <a href="{% url 'post_leer' post.id post.slug %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-right-long"></i> Abrir</a>
+                    {% if user.id == profile.user.id %}
+                    <a href="{% url 'post_editar' post.id post.slug %}" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i> Editar Post</a>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticModalEliminar">
+                        <i class="fa-regular fa-trash-can"></i> Eliminar
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif  %}
+            <div class="modal fade" id="staticModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header" data-bs-theme="dark">
+                        <h5>Eliminar Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Desea eliminar este post?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{% url 'post_eliminar' post.id %}" class="btn btn-danger">Eliminar</a>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</article>
