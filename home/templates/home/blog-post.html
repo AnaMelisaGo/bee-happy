@@ -71,7 +71,7 @@
 
 {% block post_js %}
 <script>
-{% comment %} const STATIC_URL = "/static/"; {% endcomment %}
+const STATIC_URL = "{% get_static_prefix %}";
 </script>
 <script src="{% static 'js/home/home.js' %}"></script>
 {% endblock post_js %}

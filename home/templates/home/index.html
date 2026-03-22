@@ -90,7 +90,8 @@
 
 {% block post_js %}
 <script>
-const STATIC_URL = "{{ STATIC_URL }}";
+const STATIC_URL = "{% get_static_prefix %}";
+console.log(STATIC_URL);
 </script>
 <script src="{% static 'js/home/home.js' %}"></script>
 {% endblock post_js %}
