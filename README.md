@@ -3,7 +3,7 @@
 
 
 ## Tabla de contenidos:
-* [¿Qué hace y qué necesita cumplir?](#qué-hace-y-qué-necesita-cumplir)
+* [¿Qué es BEE HAPPY?](#qué-es-bee-happy)
 * [Funcionalidad del Proyecto](#funcionalidad-del-proyecto)
 * [Experiencia de Usuario](#experiencia-de-usuario)
    * [User Stories](#user-stories)
@@ -27,7 +27,7 @@
 ***
 
 
-## ¡Bienvenido/a a <>!!
+## ¡Bienvenido/a a [Bee Happy](https://bee-happy-production.up.railway.app) Blog!!
 
 
 ![show final site image here](assets/docs/image.png)
@@ -36,7 +36,7 @@
 ***
 
 
-## ¿Qué hace y qué necesita cumplir?
+## ¿Qué es BEE HAPPY?
 
 lorem
 
