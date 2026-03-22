@@ -86,7 +86,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config_bee_happy.wsgi.application'
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://bee-happy-production.up.railway.app',
+    'http://bee-happy-production.up.railway.app',
+]
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
