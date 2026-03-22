@@ -28,11 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-# DEBUG = os.getenv("DEBUG") == "True"
-# ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
+SECRET_KEY = os.getenv("SECRET_KEY", '')
+DEBUG = os.getenv("DEBUG", "False") == "True"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 # Application definition
 
@@ -91,13 +90,23 @@ WSGI_APPLICATION = 'config_bee_happy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+if ENVIRONMENT == 'production':
+    DATABASES = {
+        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+    # 'default': dj_database_url.config(default='sqlite:///db.sqlite3')
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-}
+
 
 
 # Password validation
