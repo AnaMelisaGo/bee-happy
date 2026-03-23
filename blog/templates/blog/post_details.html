@@ -103,8 +103,8 @@
                         {% endif %}
                     </p>
                     <div class="d-flex">
-                        <a href="{% url 'profile' post.autor.id %}" class="text-light text-decoration-underline me-3">@{{ post.autor.username|lower }}</a>
                         {% if user.is_authenticated %}
+                        <a href="{% url 'profile' post.autor.id %}" class="text-light text-decoration-underline me-3">@{{ post.autor.username|lower }}</a>
                             {% if user.id is not post.autor.id %}
                             <form method="POST">
                                 {% csrf_token %}
