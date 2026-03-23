@@ -34,30 +34,6 @@
                 </div>
             </div>
              {% endfor %}
-            {% comment %} ---- delete ----- {% endcomment %}
-            {{ posts }}
-            {% for post in posts %}
-            {{ post.slug }}
-            {{ post.id }}
-            {{ post.titulo }}
-            {{ post.resumen }}
-            {{ post.categoria }}
-            {% comment %} {{ post.imagen_principal.url }} {% endcomment %}
-            {{ post.cuerpo }}
-            {{ post.fecha_publicacion }}
-            {{ post.actualizado }}
-            {{ post.likes.count }}
-            {{ post.autor.id }}
-            {{ post.autor }}
-            {{ post.status }}
-            
-        
-            {% for categoria in categorias %}
-        
-            {{ categoria.name }} - {{ categoria.slug }}
-            {% endfor %}
-            {% endfor %}
-            {% comment %} ------ delete   -------------- {% endcomment %}
         </article>
         <aside class="blog-aside">
             {% include 'blog/components/categories-menu.html' %}
