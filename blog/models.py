@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -28,7 +29,8 @@ class Post(models.Model):
     categoria = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='posts', blank=True, null=True)
     fecha_publicacion = models.DateTimeField(auto_now_add=True)
     resumen = models.CharField(max_length=100, null=True, blank=True)
-    cuerpo = models.TextField(null=True, blank=True)
+    cuerpo = RichTextField(null=True, blank=True)
+    # cuerpo = models.TextField(null=True, blank=True)
     imagen_principal = models.ImageField(upload_to='images/', null=True, blank=True)
     actualizado = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='borrador')
