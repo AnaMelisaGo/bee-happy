@@ -7,4 +7,5 @@ urlpatterns = [
     path('posts/<int:pk>/<slug:slug>', views.post_leer, name='post_leer'),
     path('posts/editar/<int:pk>/<slug:slug>', views.post_editar, name='post_editar'),
     path('posts/eliminar/<int:pk>/', views.post_eliminar, name='post_eliminar'),
+    path('posts/like/<int:pk>/<slug:slug>/', views.like_post, name='like_post'),
 ]

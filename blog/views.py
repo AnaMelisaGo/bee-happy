@@ -46,6 +46,11 @@ def post_leer(request, pk, slug):
     post = get_object_or_404(Post, pk=pk, slug=slug)
     current_user = request.user
     action = request.POST.get('action')
+
+    liked = False
+    if post.likes.filter(id=current_user.id).exists():
+        liked = True
+    
     if request.method == 'POST':
         if action == 'unfollow':
             current_user.profile.follows.remove(post.autor.profile)
@@ -57,8 +62,26 @@ def post_leer(request, pk, slug):
             return HttpResponseRedirect(reverse('post_leer', args=[pk, slug]))
     context = {
         'post': post,
+        'user_liked': liked,
     }
     return render(request, 'blog/post_details.html', context)
+
+
+def like_post(request, pk, slug):
+    """
+    Función de like y dislike de cada post
+
+    Args:
+        request: usuario
+        pk: el id del post (primary key)
+    """
+    post = get_object_or_404(Post, pk=pk, slug=slug)
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        return redirect('post_leer', pk=pk, slug=slug)
+    else:
+        post.likes.add(request.user)
+        return redirect('post_leer', pk=pk, slug=slug)
 
 
 def post_editar(request, pk, slug):

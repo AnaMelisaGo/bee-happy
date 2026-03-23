@@ -35,8 +35,14 @@
                 <p><i class="fa-solid fa-tag"></i> {{ post.categoria }}</p>
                 {% endif %}
                 <div>
-                    <a href="#" class="like-btn"><i class="fa-regular fa-heart"></i></a>
-                    <small>{{ post.likes.count }}</small>
+                    {% if user_liked %}
+                    <a href="{% url 'like_post' post.id post.slug %}" class="like-btn"><i class="fa-solid fa-heart"></i></a>
+                    <small>{{ post.number_of_likes }}</small>
+                    {% else %}
+                    <a href="{% url 'like_post' post.id post.slug %}" class="like-btn"><i class="fa-regular fa-heart"></i></a>
+                    <small>{{ post.number_of_likes }}</small>
+                    {% endif %}
+
                 </div>
             </div>
         </section>
@@ -73,7 +79,9 @@
                             </form>
                             {% endif %}
                         {% endif %}
-
+                        {% if not user_liked %}
+                        not
+                        {% endif %}
                     </div>
                 </div>
             </aside>

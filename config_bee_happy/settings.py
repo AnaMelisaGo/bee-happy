@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'blog',
 
     'storages', #for s3
+    'ckeditor',
 ]
 
 MESSAGE_TAGS = {

@@ -111,10 +111,12 @@ def profile(request, pk):
             if action == 'unfollow':
                 current_user.profile.follows.remove(profile)
                 current_user.profile.save()
+                messages.warning(request, f'Ya no esta siguiendo a {profile.user.username}')
                 return redirect('profile', pk=profile.pk)
             elif action == 'follow':
                 current_user.profile.follows.add(profile)
                 current_user.profile.save()
+                messages.success(request, f'Ya estás siguiendo a {profile.user.username}')
                 return redirect('profile', pk=profile.pk)
             elif action == 'category':
                 if current_user.is_superuser:
