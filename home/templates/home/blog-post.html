@@ -49,12 +49,12 @@
                 <div>
                     <h5>Sobre el autor</h5>
                     <p>Nombre: <span id="autor-aside"></span></p>
-                    <a class="follow-btn"><i class="fa-solid fa-square-plus"></i> Follow</a>
+                    <a class="f-btn follow-btn"><i class="fa-solid fa-square-plus"></i> Follow</a>
                 </div>
                 <div class="sidebar-widget">
                     <h5 class="text-decoration-underline">Suscríbete</h5>
                     <p class="mb-3">Recibe noticias y nuevos artículos del blog en tu email.</p>
-                    <form class="susbribe-form">
+                    <form class="susbribe-form" onsubmit="validarSuscripcion(event)">
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="email-suscripcion" placeholder="name@example.com">
                             <label for="email-suscripcion">Email address</label>

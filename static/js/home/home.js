@@ -141,7 +141,7 @@ const filtrarPorCategoria = (categoria) => {
 };
 
 
-//======================  ========================
+//====================== FUNCIÓN 4: DISPARADOR CONTENIDO ========================
 
 window.onload = () => {
     if (document.getElementById('card-container')) {
@@ -153,6 +153,25 @@ window.onload = () => {
     }
 };
 
+//=============== FUNCIÓN 5: VALIDACIÓN DE FORMULARIO SUSCRIPCIÓN ==================
+const validarSuscripcion = (event) => {
+    event.preventDefault();
+    const campoEmail = document.getElementById('email-suscripcion');
+    const errormsg = document.getElementById('mensaje-error');
 
+    const emailInputText = campoEmail.value;
 
+    if (emailInputText === '' || emailInputText.indexOf('.') === -1) {
+        errormsg.innerText = 'Por favor introduzca su correo electrónico';
+        errormsg.style.color = 'red';
+    } else {
+        errormsg.innerText = '¡Gracias por suscribirse!';
+        errormsg.style.color = '#34e334';
+    }
+    
+    errormsg.style.fontWeight = '600';
+    errormsg.style.display = 'block';
+    errormsg.style.textShadow = '2px 0px 3px black';
+
+}
 
