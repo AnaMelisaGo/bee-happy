@@ -37,14 +37,23 @@
                 <div>
                     {% if user.is_authenticated %}
                     {% if user_liked %}
-                    <a href="{% url 'like_post' post.id post.slug %}" class="like-btn"><i class="fa-solid fa-heart"></i></a>
-                    <small>{{ post.number_of_likes }}</small>
+                    <a href="{% url 'like_post' post.id post.slug %}" class="like-btn"><span>❤️</span></a>
+                    <small> 
+                        {% with others=post.number_of_likes|add:"-1" %}
+                            {% if others == 1 %}
+                            Tú + 1 likes
+                            {% elif others > 1 %}
+                            Tú + {{ others }} likes
+                            {% else %}
+                            Te gusta! </small>
+                            {% endif %}
+                        {% endwith %}
                     {% else %}
                     <a href="{% url 'like_post' post.id post.slug %}" class="like-btn"><i class="fa-regular fa-heart"></i></a>
-                    <small>{{ post.number_of_likes }}</small>
+                    <small>{{ post.number_of_likes }} likes</small>
                     {% endif %}
                     {% else %}
-                    <p>{{ post.number_of_likes }}</p>
+                    <p>{{ post.number_of_likes }} likes</p>
                     {% endif %}
                 </div>
             </div>

@@ -71,7 +71,7 @@ option {
 }
 
 textarea.form-control {
-    min-height: 10rem !important;
+    min-height: 5rem !important;
 }
 
 .form-control:focus {
@@ -860,8 +860,16 @@ img {
 }
 
 .like-btn {
-    font-size: 1.5rem;
     line-height: 1;
+}
+
+.like-btn span,
+.like-btn i {
+    font-size: 1.5rem;
+}
+
+.like-icon {
+    color: radial-gradient(circle at 50.4% 50.5%, rgb(251, 32, 86) 0%, rgb(135, 2, 35) 90%);
 }
 
 /* .main-cuerpo::before {
@@ -881,17 +889,17 @@ img {
     justify-content: space-between;
 }
 
-.blog-aside {
-    margin: 0 0 50px 30px;
+.blog-aside > div {
+    margin: 0 20px 30px;
     padding: 1rem 2rem;
     background: var(--bee-brown);
     border-radius: 20px;
     /* max-height: 70vh; */
 }
 
-.blog-aside > div {
+/* .blog-aside > div {
     margin: 20px 0 20px;
-}
+} */
 
 .blog-aside > div ul li {
     padding: 5px 10px;
