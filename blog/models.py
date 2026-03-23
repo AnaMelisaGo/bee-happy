@@ -7,11 +7,13 @@ class Category(models.Model):
     slug = models.SlugField(unique=True, blank=True)
 
     def save(self, *args, **kwargs):
+        """ Función para generar slug a cada categoría añadido """
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
+        """ Devuelve el nombre de la categoría """
         return self.name
 
 class Post(models.Model):
@@ -37,10 +39,15 @@ class Post(models.Model):
         ordering = ['-fecha_publicacion']
     
     def save(self, *args, **kwargs):
+        """ Función para generar slug a cada post creado """
         if not self.slug:
             self.slug = slugify(self.titulo)
         super().save(*args, **kwargs)
 
     def __str__(self):
-        """ Devolver el título del post en el admin """
+        """ Devolver el título del post """
         return self.titulo
+    
+    def number_of_likes(self):
+        """ Función para contar el total de likes de cada post """
+        return self.likes.count()
