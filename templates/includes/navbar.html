@@ -12,8 +12,19 @@
     </label>
     <ul class="menu">
         <li><a href="{% url 'home' %}" class="{{ home }}">Inicio</a></li>
-        <li><a href="#">Sobre Nosotros</a></li>
+        <li><a href="#">About Us</a></li>
         <li><a href="{% url 'contact_us' %}" class="{{ contact }}">Contacto</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Blog Post
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'post_todos' %}" class="dropdown-item">Todos</a></li>
+            {% for categoria in categorias %}
+            <li><a class="dropdown-item" href="{% url 'post_categoria' categoria.slug %}">{{ categoria }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
         <li class="dropdown">
             {% comment %} <a href="#" class="login-btn">Login</a> {% endcomment %}
             <a class="login-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

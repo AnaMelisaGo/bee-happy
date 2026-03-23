@@ -29,20 +29,18 @@
 </header>
 <main id="main">
     <section class="bee-categories">
-        {% comment %} <h2>Categories</h2> {% endcomment %}
-        <div>
+        {% comment %} <div>
             <a href="{% url 'post_todos' %}" class="todos-categoria">Todos</a>
             {% for categoria in categorias %}
             <a href="{% url 'post_categoria' categoria.slug %}">{{ categoria }}</a>
             {% endfor %}
-            
-        </div>
+        </div> {% endcomment %}
         <div id="categoria-menu">
             <a href="#" onclick="filtrarPorCategoria('todos')">Todos</a>
             <a href="#" onclick="filtrarPorCategoria('abejas')">Sobre aBEEjas</a>
             <a href="#" onclick="filtrarPorCategoria('miel')">Miel y beneficios</a>
             <a href="#" onclick="filtrarPorCategoria('apicultura')">Apicultura</a>
-            <a href="#" onclick="filtrarPorCategoriia('rescatar')">Rescatar abejas</a>
+            <a href="#" onclick="filtrarPorCategoria('rescatar')">Rescatar abejas</a>
             <a href="#" onclick="filtrarPorCategoria('jardeneria')">Jardenería</a>
         </div>
     </section>
