@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Category, Post
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 
 def filtrar_categoria(request, slug):
@@ -44,25 +44,41 @@ def post_leer(request, pk, slug):
         request (slug): Es el slug del post (creado automaticamente)
     """
     post = get_object_or_404(Post, pk=pk, slug=slug)
-    current_user = request.user
-    action = request.POST.get('action')
-
+    comments = post.comments.filter(post_id=pk).order_by('date_created')
+    form = CommentForm()
     liked = False
-    if post.likes.filter(id=current_user.id).exists():
-        liked = True
-    
-    if request.method == 'POST':
-        if action == 'unfollow':
-            current_user.profile.follows.remove(post.autor.profile)
-            current_user.profile.save()
-            return HttpResponseRedirect(reverse('post_leer', args=[pk, slug]))
-        elif action == 'follow':
-            current_user.profile.follows.add(post.autor.profile)
-            current_user.profile.save()
-            return HttpResponseRedirect(reverse('post_leer', args=[pk, slug]))
+    if request.user.is_authenticated:
+        current_user = request.user
+        action = request.POST.get('action')
+
+        if post.likes.filter(id=current_user.id).exists():
+            liked = True
+        
+        if request.method == 'POST':
+            if action == 'unfollow':
+                current_user.profile.follows.remove(post.autor.profile)
+                current_user.profile.save()
+                return HttpResponseRedirect(reverse('post_leer', args=[pk, slug]))
+            elif action == 'follow':
+                current_user.profile.follows.add(post.autor.profile)
+                current_user.profile.save()
+                return HttpResponseRedirect(reverse('post_leer', args=[pk, slug]))
+            elif action == 'comment':
+                if request.method == 'POST':
+                    form = CommentForm(request.POST)
+                    if form.is_valid():
+                        comment = form.save(commit=False)
+                        comment.name = current_user
+                        comment.post = post
+                        comment.save()
+                        messages.success(request, 'Has comentado a este post.')
+                        return HttpResponseRedirect(reverse('post_leer', args=[pk, slug]))
+
     context = {
         'post': post,
         'user_liked': liked,
+        'comments': comments,
+        'form': form,
     }
     return render(request, 'blog/post_details.html', context)
 

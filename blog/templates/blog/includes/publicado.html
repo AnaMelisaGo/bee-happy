@@ -1,45 +1,43 @@
 {% load static %}
-<article>
-    <h5>Posts</h5>
-    <div class="profile-posts">
-        {% if posts %}
-            {% for post in posts %}
-                {% if post.status == 'publicado' %}
-                <div class="pos-rel tarjeta mb-3">
-                    {% if post.imagen_principal %}
-                    <img src="{{ post.imagen_principal.url }}" class="card-img-top profile-post" alt="Imagen del post">
+<h5>Posts</h5>
+<div class="profile-posts">
+    {% if posts %}
+        {% for post in posts %}
+            {% if post.status == 'publicado' %}
+            <div class="pos-rel tarjeta mb-3">
+                {% if post.imagen_principal %}
+                <img src="{{ post.imagen_principal.url }}" class="card-img-top profile-post" alt="Imagen del post">
+                {% else %}
+                <img src="{% static 'images/no_image_available.jpg' %}" class="card-img-top profile-post" alt="No image available">
+                {% endif %}
+                <div class="bee-pill">{{ post.categoria.name }}</div>
+                <div class="bee-card-body">
+                    <h5 class="card-title">{{ post.titulo }}</h5>
+                    <p class="card-text">{{ post.resumen|slice:40 }}</p>
+                    <p>
+                        <small>Autor: <span>{{ post.autor }}</span></small>
+                    </p>
+                    <p>
+                        <small>Categoria: <span>{{ post.categoria }}</span></small>
+                    </p>
+                    <p class="card-text"><small>Actualizado el {{ post.actualizado|date:"d M Y" }}</small></p>
+                    {% if user.id == profile.user.id %}
+                    <a href="{% url 'post_leer' post.id post.slug %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-right-long"></i> Abrir</a>
+                    <a href="{% url 'post_editar' post.id post.slug %}" class="btn btn-success">
+                        <i class="fa-regular fa-pen-to-square"></i> Editar Post
+                    </a>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticModalDelete{{ post.id }}">
+                        <i class="fa-regular fa-trash-can"></i> Eliminar
+                    </button>
                     {% else %}
-                    <img src="{% static 'images/no_image_available.jpg' %}" class="card-img-top profile-post" alt="No image available">
+                    <a href="{% url 'post_leer' post.id post.slug %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-right-long"></i> Leer más</a>
                     {% endif %}
-                    <div class="bee-pill">{{ post.categoria.name }}</div>
-                    <div class="bee-card-body">
-                        <h5 class="card-title">{{ post.titulo }}</h5>
-                        <p class="card-text">{{ post.resumen|slice:40 }}</p>
-                        <p>
-                            <small>Autor: <span>{{ post.autor }}</span></small>
-                        </p>
-                        <p>
-                            <small>Categoria: <span>{{ post.categoria }}</span></small>
-                        </p>
-                        <p class="card-text"><small>Actualizado el {{ post.actualizado|date:"d M Y" }}</small></p>
-                        {% if user.id == profile.user.id %}
-                        <a href="{% url 'post_leer' post.id post.slug %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-right-long"></i> Abrir</a>
-                        <a href="{% url 'post_editar' post.id post.slug %}" class="btn btn-success">
-                            <i class="fa-regular fa-pen-to-square"></i> Editar Post
-                        </a>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticModalDelete{{ post.id }}">
-                            <i class="fa-regular fa-trash-can"></i> Eliminar
-                        </button>
-                        {% else %}
-                        <a href="{% url 'post_leer' post.id post.slug %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-right-long"></i> Leer más</a>
-                        {% endif %}
-                    </div>
                 </div>
-                {% endif  %}
-                {% include 'blog/components/delete_modal.html' %}
-            {% endfor %}
-        {% else %}
-        <p>No tiene ningún post.</p>
-        {% endif %}
-    </div>
-</article>
+            </div>
+            {% endif  %}
+            {% include 'blog/components/delete_modal.html' %}
+        {% endfor %}
+    {% else %}
+    <p>No tiene ningún post.</p>
+    {% endif %}
+</div>

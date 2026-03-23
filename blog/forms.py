@@ -1,6 +1,6 @@
 from django import forms
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from .models import Category, Post
+from .models import Category, Post, Comment
 from userprofiles.forms import BootstrapForm
 
 class CategoryForm(BootstrapForm, forms.ModelForm):
@@ -20,6 +20,8 @@ class PostForm(BootstrapForm, forms.ModelForm):
         model = Post
         fields = ['titulo', 'categoria', 'resumen', 'cuerpo', 'imagen_principal', 'status']
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.fields['categoria'].queryset = Category.objects.all()
+
+class CommentForm(BootstrapForm, forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['body']

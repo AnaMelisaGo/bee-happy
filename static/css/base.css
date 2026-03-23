@@ -107,6 +107,10 @@ textarea.form-control {
     animation: pop 2.5s ease-in-out;
 }
 
+.very-sm-text {
+    font-size: 0.8rem;
+}
+
 /* -------------- GLOBAL CLASS --------------------------------------------- */
 .bee-yellow {
     color: var(--bee-happy);
@@ -705,9 +709,10 @@ img {
     min-height: 40vh;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     gap: 12px;
+    padding: 0 20px;
 }
 
 .tab-btn {
@@ -870,6 +875,10 @@ img {
     /* border-top: 1px solid var(--bee-happy); */
     padding: 30px 20px;
     text-align: justify;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .blog-aside {
@@ -1077,7 +1086,7 @@ img {
     .main-cuerpo {
         display: grid;
         grid-template-columns: 1fr 30%;
-        padding: 10px 20px 50px;
+        padding: 30px 20px 50px;
     }
 
     .cuerpo-articulo {

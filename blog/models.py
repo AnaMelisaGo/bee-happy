@@ -55,7 +55,7 @@ class Post(models.Model):
         return self.likes.count()
     
 class Comment(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commented')
     body = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     date_created = models.DateTimeField(auto_now_add=True)
@@ -64,4 +64,4 @@ class Comment(models.Model):
         ordering = ['date_created']
 
     def __str__(self):
-        return f'Comment {self.body} by {self.name}'
+        return f'Comment for {self.post} by {self.name}'
