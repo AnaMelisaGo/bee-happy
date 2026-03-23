@@ -833,17 +833,25 @@ img {
     font-size: 100;
 }
 
-.follow-btn {
+.f-btn {
     color: black;
     font-size: 0.8rem;
     border: 1px solid;
     border-radius: 10px;
     padding: 2px 8px;
-    background-color: var(--bee-orange);
 }
 
-.follow-btn i {
+.follow-btn {
+    background-color: var(--bee-orange);
+
+}
+
+.f-btn i {
     color: black;
+}
+
+.unfollow-btn {
+    background-color: gray;
 }
 
 .like-btn {
@@ -1062,7 +1070,7 @@ img {
         justify-content: space-around;
     }
 
-    .follow-btn {
+    .f-btn {
         height: 1.5rem;
     }
 
