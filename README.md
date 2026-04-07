@@ -38,14 +38,20 @@
 
 ## ¿Qué es BEE HAPPY?
 
-lorem
+Este blog se centra en destacar la enorme importancia de las abejas dentro de nuestro ecosistema. Estos pequeños insectos desempeñan un papel fundamental en el equilibrio natural, siendo mucho más que simples productoras de miel. Su labor como polinizadoras es esencial para la reproducción de una gran variedad de plantas, incluyendo muchos de los cultivos que forman parte de nuestra alimentación diaria.
+
+A través de este espacio, no solo quiero dar a conocer los múltiples beneficios que las abejas aportan al medio ambiente, sino también generar conciencia sobre los riesgos que enfrentan actualmente, como el cambio climático, el uso de pesticidas y la pérdida de hábitat.
+
+El objetivo principal del blog es abrir la mentalidad de las personas, fomentar el respeto por la naturaleza y ofrecer información útil y accesible. Además, busca enseñar de manera práctica cómo cada uno de nosotros puede contribuir a la protección de esta especie tan valiosa, ya sea plantando flores adecuadas, evitando productos químicos dañinos o apoyando iniciativas de conservación.
+
+En definitiva, se trata de un espacio educativo y reflexivo que invita a comprender que cuidar de las abejas es, en realidad, cuidar de nuestro propio futuro.
 
 
 ![show favicon site image here](assets/docs/image.png)
 
 
 ### Funcionalidad del Proyecto
-Esta página contiene ....
+Este proyecto consiste en un blog desarrollado con Django en Python, creado con el objetivo de compartir ideas y conocimientos para personas de todas las edades, especialmente para los amantes de la apicultura. Además, permite reflejar los conocimientos que he adquirido a lo largo de estos años, así como lo aprendido en el curso de confección y publicación de páginas web (HTML, CSS y JavaScript).
 
 
 [Volver arriba](#tabla-de-contenidos)
@@ -136,30 +142,42 @@ Página de Inicio de sesión/Registro
 
 #### Lenguajes, Frameworks, Editores y Control de Versiones:
 
+Para el desarrollo de este proyecto se han utilizado diferentes tecnologías y herramientas. En cuanto a los lenguajes de programación, se ha trabajado con Python para la lógica del servidor, así como HTML, CSS y JavaScript para la estructura, el diseño y la interactividad del sitio web.
 
-* Añadir notas aquí sobre el stack tecnológico...
+El framework principal utilizado ha sido Django, que ha permitido desarrollar el blog de manera eficiente, gestionando tanto el backend como la conexión con la base de datos.
+
+Como editor de código, se ha empleado Visual Studio Code, debido a su versatilidad y facilidad de uso.
+
+Por último, para el control de versiones se ha utilizado Git, junto con la plataforma GitHub, lo que ha facilitado el seguimiento de cambios y la organización del proyecto.
 
 
 #### Herramientas Utilizadas:
 
 
-* Añadir notas aquí sobre las herramientas utilizadas para ayudar en el desarrollo del proyecto...
+En el desarrollo de este proyecto se han utilizado diversas herramientas de apoyo. Entre ellas se encuentra AWS, empleada para el despliegue y alojamiento del proyecto en la nube. También se ha utilizado Procreate, una aplicación de diseño digital con la que se ha creado el logotipo del blog.
+
+Además, se ha hecho uso de la IA como herramienta de apoyo para la mejora de textos y resolución de dudas durante el desarrollo del proyecto.
 
 
 ## Base de datos
 
+La base de datos utilizada en este proyecto está gestionada a través de Django, utilizando su sistema ORM (Object-Relational Mapping), lo que permite interactuar con la base de datos de forma sencilla mediante Python.
+
+Se ha creado la base de datos con Postgres y se han definido distintos modelos para gestionar la información del blog, como usuarios, publicaciones, categorías y comentarios, permitiendo una estructura organizada y eficiente de los datos.
 
 #### Esquema de la Base de Datos:
 
-
-Detalla aquí el esquema de la base de datos (si aplica).... imágenes, razonamiento detrás de las claves foráneas, etc.
-
+* 
 
 ## Funcionalidades
 
-
 El proyecto cuenta con varias características clave:
-* Crear: ...
+
+* Registro, inicio de sesión y edición de perfiles de usuario.
+* Creación, lectura, modificación y eliminación (CRUD) de publicaciones y categorías.
+* Visualización de perfiles de otros usuarios junto con sus publicaciones.
+* Sistema de comentarios en los posts.
+* Formulario de contacto para comunicarse con el administrador del blog en caso necesario.
 
 
 [Volver arriba](#tabla-de-contenidos)
@@ -206,7 +224,10 @@ Detalla el despliegue aquí...
 ## Créditos
 
 
-* Detalla los créditos
+Este proyecto ha sido posible gracias a diversas fuentes de aprendizaje e inspiración.
+
+* A John Elder, por sus enseñanzas sobre Python, que han sido de gran ayuda durante el desarrollo del proyecto.
+* A CSS-Tricks, por su extenso contenido y recursos sobre CSS, especialmente en el uso de propiedades como clip-path, que han contribuido al diseño visual del blog.
 
 
 [Volver arriba](#tabla-de-contenidos)
@@ -215,7 +236,7 @@ Detalla el despliegue aquí...
 
 #### Agradecimientos Especiales:
 
-
+* 
 * Team 11 🤜
 
 
