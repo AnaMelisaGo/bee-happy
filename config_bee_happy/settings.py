@@ -47,13 +47,20 @@ INSTALLED_APPS = [
     'blog',
 
     'storages', #for s3
-    'ckeditor',
+    'tinymce', #editor
 ]
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
     messages.ERROR: 'alert-danger',
     messages.WARNING: 'alert-warning',
+}
+
+TINYMCE_DEFAULT_CONFIG = {
+    "height": 500,
+    "menubar": True,
+    "plugins": "image link code list",
+    "toolbar": "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | image link | code",
 }
 
 MIDDLEWARE = [
@@ -157,7 +164,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+# CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 # Conectar AWS S3
 if 'USE_AWS' in os.environ:
