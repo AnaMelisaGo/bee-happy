@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 SECRET_KEY = os.getenv("SECRET_KEY", '')
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 # Application definition
 
@@ -167,7 +167,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 # Conectar AWS S3
-if 'USE_AWS' in os.environ:
+if os.getenv("USE_AWS") == "True":
     #Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00GMT',
