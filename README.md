@@ -1,5 +1,5 @@
-# Bee Happy Blog
-***
+# ¡Bienvenid@s a [Bee Happy](https://bee-happy-production.up.railway.app) Blog!!
+![show final site image here](static/images/screenshots/bee-happy-hero.png)
 
 
 ## Tabla de contenidos:
@@ -26,16 +26,6 @@
 
 ***
 
-
-## ¡Bienvenido/a a [Bee Happy](https://bee-happy-production.up.railway.app) Blog!!
-
-
-![show final site image here](assets/docs/image.png)
-
-
-***
-
-
 ## ¿Qué es BEE HAPPY?
 
 Este blog se centra en destacar la enorme importancia de las abejas dentro de nuestro ecosistema. Estos pequeños insectos desempeñan un papel fundamental en el equilibrio natural, siendo mucho más que simples productoras de miel. Su labor como polinizadoras es esencial para la reproducción de una gran variedad de plantas, incluyendo muchos de los cultivos que forman parte de nuestra alimentación diaria.
@@ -46,8 +36,8 @@ El objetivo principal del blog es abrir la mentalidad de las personas, fomentar 
 
 En definitiva, se trata de un espacio educativo y reflexivo que invita a comprender que cuidar de las abejas es, en realidad, cuidar de nuestro propio futuro.
 
-
-![show favicon site image here](assets/docs/image.png)
+### Favicon del blog
+![show favicon site image here](static/images/favicon-32x32.png)
 
 
 ### Funcionalidad del Proyecto
@@ -62,44 +52,60 @@ User Experience(UX)
 
 #### User Stories:
 _Usuario Genérico (Invitado/Público):_
-* Como Usuario Genérico, quiero...
+* Como usuario genérico, quiero poder visualizar diferentes publicaciones relacionadas con las abejas y la apicultura para adquirir conocimientos y apoyar mis investigaciones académicas o personales, sin necesidad de estar registrado.
+* Como usuario genérico, quiero tener la opción de registrarme fácilmente en la plataforma para acceder a funcionalidades adicionales y formar parte de la comunidad.
 
 
 _Usuario Registrado (Con sesión iniciada):_
-* Como Usuario Registrado, quiero...
+* Como usuario registrado, quiero poder crear publicaciones sobre apicultura para compartir conocimientos, experiencias y contenido educativo con otros usuarios interesados.
+* Como usuario registrado, quiero poder comentar y compartir ideas en las publicaciones para fomentar la interacción y el aprendizaje colaborativo.
+* Como usuario registrado, quiero poder seguir a otros usuarios y ser seguido, con el fin de construir una red de contactos con intereses similares.
+* Como usuario registrado, quiero poder comunicarme con otros aficionados a la apicultura mediante herramientas de interacción (comentarios o mensajería).
+* Como usuario registrado, quiero poder crear, editar y personalizar mi perfil de usuario para reflejar mis intereses, experiencia y actividad dentro del blog.
 
 
 _Desarrollador:_
-* Como Desarrollador, quiero...
+* Como desarrollador, quiero ampliar mis conocimientos en distintos lenguajes de programación y tecnologías web mediante la creación de un proyecto funcional.
+* Como desarrollador, quiero diseñar y desarrollar un blog accesible, intuitivo y atractivo para todo tipo de usuarios, aplicando principios de UX/UI.
+* Como desarrollador, quiero implementar buenas prácticas de desarrollo (arquitectura, escalabilidad y mantenibilidad) para asegurar la calidad del producto.
+* Como desarrollador, quiero desplegar una aplicación funcional en un entorno real para simular un producto profesional y mejorar mi experiencia práctica.
+* Como desarrollador, quiero que el blog sea didáctico y útil para usuarios que necesiten investigar sobre apicultura, facilitando el acceso a información organizada y de calidad.
 
 
 #### Diseño
 
 
 ##### 1. Tipografía
-lorem
+La tipografía principal utilizada en el proyecto es __Montserrat, sans-serif__, seleccionada desde Google Fonts por su estilo moderno, limpio y altamente legible. Esta fuente fue elegida debido a que ofrece una excelente experiencia de lectura en dispositivos digitales, facilitando la comprensión del contenido y mejorando la navegación del usuario dentro del blog.
+
+Para complementar la identidad visual del proyecto, se utilizó la tipografía __Barriecito__ en el nombre del logotipo. Esta fuente aporta un estilo más creativo, amigable y dinámico, ayudando a representar la personalidad cercana y didáctica del blog. La combinación entre __Montserrat y Barriecito__ permite equilibrar profesionalismo y creatividad dentro de la interfaz y la identidad de marca.
 
 
 ##### 2. Paleta de Colores
-reemplazar según sea necesario
-Detalla aquí las paletas de colores/muestras usando imágenes.
-Los colores utilizados en toda la aplicación y para qué, etc....
+
+![La paleta de colores del sitio web](static/images/screenshots/paleta-colores.png)
+
+La paleta de colores está inspirada en el mundo de las abejas y la naturaleza:
+
+* El _bee-dark_ aporta elegancia, contraste y profundidad visual.
+* El bee-happy representa la energía, vitalidad y el carácter positivo asociado a las abejas.
+* El _bee-orange_ añade dinamismo y llama la atención en elementos importantes (botones o acciones).
+* El _bee-light_ ofrece equilibrio visual, suavidad y mejora la legibilidad de los contenidos.
+* El _bee-brown_ conecta con la tierra, lo orgánico y el entorno natural de las abejas.
+
+En conjunto, esta paleta transmite cercanía, naturaleza y dinamismo, alineándose con la temática del blog.
 
 
 ##### 3. Logotipo
-El logotipo fue... añadir detalles, o eliminar según sea necesario
+El logotipo fue diseñado por __SophiaJ__ utilizando la herramienta _Procreate_ de Apple.
+
+Representa una abeja en vuelo, simbolizando movimiento, comunidad y trabajo colaborativo. Este elemento visual refuerza la temática del blog y ayuda a generar una identidad clara y reconocible para los usuarios.
 
 
-![show site logo here](assets/docs/image.png)
+![El logo del sitio web](static/images/bee-logo.png)
 
 
-##### 4. Geometría
-
-
-Los aspectos geométricos de la aplicación...
-
-
-##### 5. Wireframing
+##### 4. Wireframing
 
 
 Los wireframes fueron creados para cada página individual en tres tamaños de pantalla diferentes. Todos los wireframes se encuentran a continuación.
@@ -142,28 +148,31 @@ Página de Inicio de sesión/Registro
 
 #### Lenguajes, Frameworks, Editores y Control de Versiones:
 
-Para el desarrollo de este proyecto se han utilizado diferentes tecnologías y herramientas. En cuanto a los lenguajes de programación, se ha trabajado con Python para la lógica del servidor, así como HTML, CSS y JavaScript para la estructura, el diseño y la interactividad del sitio web.
+Para el desarrollo de este proyecto se han utilizado diferentes tecnologías y herramientas. En cuanto a los lenguajes de programación, se ha trabajado con __Python__ para la lógica del servidor, así como __HTML, CSS y JavaScript__ para la estructura, el diseño y la interactividad del sitio web.
 
-El framework principal utilizado ha sido Django, que ha permitido desarrollar el blog de manera eficiente, gestionando tanto el backend como la conexión con la base de datos.
+El framework principal utilizado ha sido __Django__, que ha permitido desarrollar el blog de manera eficiente, gestionando tanto el backend como la conexión con la base de datos.
 
-Como editor de código, se ha empleado Visual Studio Code, debido a su versatilidad y facilidad de uso.
+Como editor de código, se ha empleado __Visual Studio Code__, debido a su versatilidad y facilidad de uso.
 
-Por último, para el control de versiones se ha utilizado Git, junto con la plataforma GitHub, lo que ha facilitado el seguimiento de cambios y la organización del proyecto.
+Por último, para el control de versiones se ha utilizado __Git__, junto con la plataforma __GitHub__, lo que ha facilitado el seguimiento de cambios y la organización del proyecto.
 
 
 #### Herramientas Utilizadas:
 
+En el desarrollo de este proyecto se han utilizado diversas herramientas y tecnologías de apoyo para mejorar tanto el proceso de creación como el despliegue de la aplicación. Entre ellas se encuentra __AWS__, utilizada para el almacenamiento y alojamiento de archivos multimedia en la nube, permitiendo una gestión más segura, escalable y eficiente de las imágenes y recursos del blog.
 
-En el desarrollo de este proyecto se han utilizado diversas herramientas de apoyo. Entre ellas se encuentra AWS, empleada para el despliegue y alojamiento del proyecto en la nube. También se ha utilizado Procreate, una aplicación de diseño digital con la que se ha creado el logotipo del blog.
+También se ha utilizado __Procreate__, una aplicación de diseño digital empleada para la creación del logotipo oficial del proyecto, aportando una identidad visual personalizada y creativa acorde con la temática del blog.
 
-Además, se ha hecho uso de la IA como herramienta de apoyo para la mejora de textos y resolución de dudas durante el desarrollo del proyecto.
+Para el despliegue de la aplicación se utilizó __Railway__, una plataforma de hosting moderna que ofrece un excelente soporte para proyectos desarrollados en Python. Esta herramienta fue seleccionada debido a su facilidad de uso, automatización de despliegues y coste accesible, convirtiéndose en una opción ideal para desarrolladores principiantes o proyectos en fase de aprendizaje.
+
+Además, se ha hecho uso de herramientas basadas en inteligencia artificial como apoyo durante el desarrollo del proyecto, especialmente para la mejora y redacción de textos, resolución de dudas técnicas y optimización de ideas relacionadas con diseño, experiencia de usuario y desarrollo web.
 
 
 ## Base de datos
 
-La base de datos utilizada en este proyecto está gestionada a través de Django, utilizando su sistema ORM (Object-Relational Mapping), lo que permite interactuar con la base de datos de forma sencilla mediante Python.
+La base de datos utilizada en este proyecto está gestionada a través de __Django__, utilizando su sistema __ORM__ _(Object-Relational Mapping)_, lo que permite interactuar con la base de datos de forma sencilla mediante __Python__.
 
-Se ha creado la base de datos con Postgres y se han definido distintos modelos para gestionar la información del blog, como usuarios, publicaciones, categorías y comentarios, permitiendo una estructura organizada y eficiente de los datos.
+Se ha creado la base de datos con __Postgresql__ y se han definido distintos modelos para gestionar la información del blog, como usuarios, publicaciones, categorías y comentarios, permitiendo una estructura organizada y eficiente de los datos.
 
 #### Esquema de la Base de Datos:
 
@@ -228,6 +237,8 @@ Este proyecto ha sido posible gracias a diversas fuentes de aprendizaje e inspir
 
 * A John Elder, por sus enseñanzas sobre Python, que han sido de gran ayuda durante el desarrollo del proyecto.
 * A CSS-Tricks, por su extenso contenido y recursos sobre CSS, especialmente en el uso de propiedades como clip-path, que han contribuido al diseño visual del blog.
+* Code Institute por los conocimientos y enseñanzas adquiridas durante el curso de Software Development.
+* SheCodes por facilitar herramientas y guias en el color para esta página web.
 
 
 [Volver arriba](#tabla-de-contenidos)
@@ -236,8 +247,11 @@ Este proyecto ha sido posible gracias a diversas fuentes de aprendizaje e inspir
 
 #### Agradecimientos Especiales:
 
-* 
-* Team 11 🤜
+* A __Fabiola__, profesora del módulo de Confección y Publicación de Páginas Web, por compartir sus conocimientos, experiencia y dedicación durante el curso. Gracias a sus enseñanzas hemos adquirido una base sólida en desarrollo frontend, aprendiendo herramientas, buenas prácticas y consejos que serán de gran utilidad en nuestra vida profesional. Además, nos introdujo en el uso de WordPress, una de las plataformas más utilizadas y competitivas para la creación y gestión de páginas web.
+* A __Método Grupo__ por brindarnos la oportunidad de formarnos, aprender nuevas habilidades y crecer tanto a nivel personal como profesional en el ámbito del desarrollo web.
+* A mis compañeros del curso de Confección y Publicación de Páginas Web por el apoyo, la colaboración y los momentos compartidos durante estos meses de aprendizaje. El trabajo en equipo y el compañerismo han sido una parte importante de esta experiencia.
+* Team 11 🤜 del Hackathon Dic 2021 por todas las aportaciones, conocimientos y experiencias compartidas relacionadas con el desarrollo de páginas web. Su apoyo y colaboración fueron una gran fuente de motivación y aprendizaje, ayudándome a mejorar mis habilidades técnicas y a comprender mejor el trabajo en equipo dentro del entorno del desarrollo web.
+* A mi familia por confiar en mí, en mis capacidades y por apoyarme durante todo el proceso de aprendizaje y desarrollo de mis proyectos. Su motivación y apoyo constante han sido fundamentales para seguir creciendo tanto a nivel personal como profesional. También quiero hacer una mención especial a __SophiaJ__ por el diseño del logotipo de la página web, aportando creatividad, dedicación y una identidad visual única que representa perfectamente la esencia del proyecto.
 
 
 ###### <i>Aviso legal: Este proyecto fue creado únicamente con fines educativos como parte del curso de Confección y Publicación de Páginas Web.</i>
