@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
-# from ckeditor.widgets import CKEditorWidget
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 class BootstrapForm:
     def __init__(self, *args, **kwargs):
@@ -9,6 +9,10 @@ class BootstrapForm:
 
         for field_name, field in self.fields.items():
             widget = field.widget
+
+            if isinstance(widget, CKEditor5Widget):
+                field.label = ""
+                continue
 
             if isinstance(widget, forms.CheckboxInput):
                 css_class = "form-check-input"
@@ -23,8 +27,7 @@ class BootstrapForm:
                 'placeholder': field.label,
             })
 
-            # if isinstance(widget, CKEditorWidget):
-            #     field.label = ""
+            
 
 class RegisterForm(BootstrapForm, UserCreationForm):
     email = forms.EmailField()

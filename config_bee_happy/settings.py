@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'blog',
 
     'storages', #for s3
-    'tinymce', #editor
+    'django_ckeditor_5',
 ]
 
 MESSAGE_TAGS = {
@@ -56,11 +56,18 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
 }
 
-TINYMCE_DEFAULT_CONFIG = {
-    "height": 500,
-    "menubar": True,
-    "plugins": "image link code list",
-    "toolbar": "undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | image link | code",
+CKEDITOR_5_CONFIGS = {
+    "default": {
+        "toolbar": [
+            "heading", "|",
+            "bold", "italic", "link",
+            "alignment", "|",
+            "bulletedList", "numberedList",
+            "blockQuote",
+            "imageUpload",
+            "undo", "redo"
+        ],
+    }
 }
 
 MIDDLEWARE = [

@@ -939,7 +939,15 @@ img {
     }
 }
 
+.ck.ck-content {
+    background: white !important;
+    color: black !important;
+}
 
+.ck-editor__editable p {
+    background: white !important;
+    color: black !important;
+}
 /* -------------- RESPONSIVE --------------------------------------------- */
 @media (min-width: 768px) {
     /* --- NAVBAR ---------------- */

@@ -4,10 +4,22 @@
     {{ form.media }}
     {% for field in form %}
     <div class="form-floating mb-3">
-        {{ field }}
+        {% if field.name == 'cuerpo' %}
+            <div class="mb-3">
+                {{ field }}
+            </div>
+        {% else %}
+            <div class="form-floating mb-3">
+                {{ field }}
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                </label>
+            </div>
+        {% endif %}
+        {% comment %} {{ field }}
         <label for="{{ field.id_for_label }}">
             {{ field.label }}
-        </label>
+        </label> {% endcomment %}
         {% if field.errors %}
         <div class="invalid-feedback">
             {{ field.errors.0 }}
