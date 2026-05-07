@@ -944,8 +944,20 @@ img {
     color: black !important;
 }
 
-.ck-editor__editable p {
+.ck-editor__editable p,
+.ck-editor__editable p *,
+.ck-editor__editable * {
     background: white !important;
+    color: black !important;
+}
+
+.ck-editor__editable ol li {
+    list-style-type: decimal;
+    color: black !important;
+}
+
+.ck-editor__editable ul li {
+    list-style-type: disc;
     color: black !important;
 }
 /* -------------- RESPONSIVE --------------------------------------------- */
